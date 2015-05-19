@@ -175,8 +175,9 @@ public class Connect
 
     }
 
-    public void setCheckAndCom (boolean check, String com){
-int i = 0;
+    public void setCheck (boolean check, String nom){
+
+        int i = 0;
 
         try {
             stmt = conn.createStatement();
@@ -188,7 +189,7 @@ int i = 0;
                 i = 1;
             }
             else i=0;
-            stmt.executeUpdate("INSERT INTO todo (description, checkasdone)"+"VALUES ('"+com+"', '"+i+"')");
+            stmt.executeUpdate("UPDATE todo "+"SET checkasdone = ('"+i+"')"+"WHERE nom = '"+nom+"'");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -215,6 +216,96 @@ int i = 0;
                 return Integer.parseInt(done);
             }
 
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public void setComment (String nomToDo, String com, int iduser){
+
+        int id = 0;
+        try {
+            stmt = conn.createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            rs = stmt.executeQuery("SELECT id FROM todo WHERE nom = '" + nomToDo + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            while (rs.next()) {
+                 id = Integer.parseInt(rs.getString("id"));
+
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            stmt.executeUpdate("INSERT INTO commentaire (todo, body, user)"+"VALUES ('"+id+"', '"+com+"', '"+iduser+"')");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String[] getComment(int id){
+
+        String[] listcomment = new String[255];
+        int compteur = 0;
+
+        try {
+            stmt = conn.createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            rs = stmt.executeQuery("SELECT body FROM commentaire WHERE todo = '" + id + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            while (rs.next()) {
+                String comment = rs.getString("body");
+                listcomment[compteur] = comment;
+                compteur++;
+            }
+            return listcomment;
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int getIdToDoByName(String nom){
+        int id = 0;
+        try {
+            stmt = conn.createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            rs = stmt.executeQuery("SELECT id FROM todo WHERE nom = '" + nom + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            while (rs.next()) {
+                id = Integer.parseInt(rs.getString("id"));
+
+            }
+            return id;
 
         } catch (SQLException e) {
             e.printStackTrace();
