@@ -20,7 +20,7 @@ public class mainJFrameUser extends JFrame implements ActionListener {
     JScrollPane jScrollPane = new JScrollPane(commentJtextfield);
     JButton saveJbutton = new JButton("Save");
     int conteur = 0;
-    int compteur;
+    boolean checkshow = false;
 
     public mainJFrameUser(){
 
@@ -39,6 +39,7 @@ public class mainJFrameUser extends JFrame implements ActionListener {
 
         pancomment.removeAll();
 
+        checkshow = true;
         String[] test;
 //        test =  ConnectionJFrame.dbrequet.getComment(ConnectionJFrame.dbrequet.getIdToDoByName(source.getText()));
         source = (JButton) e.getSource();
@@ -59,14 +60,14 @@ public class mainJFrameUser extends JFrame implements ActionListener {
             }
 
         }
-        compteur++;
+
 
 
     }
 
     public void init(){
 
-        compteur = 0;
+
         String[] test;
         commentJtextfield.setText("");
         test =  ConnectionJFrame.dbrequet.getAllTicket();
@@ -87,7 +88,7 @@ public class mainJFrameUser extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (compteur != 0) {
+                if (checkshow) {
 
                     if (done.isSelected()) {
                         if (!commentJtextfield.getText().isEmpty()) {
@@ -98,7 +99,8 @@ public class mainJFrameUser extends JFrame implements ActionListener {
                             main.repaint();
                             main.init();
                             main.revalidate();
-
+                            commentJtextfield.setText("");
+                            done.setSelected(false);
 
                         } else {
                             JOptionPane.showMessageDialog(mainJFrameUser.this, "Please enter a comment", "Missing Comment", JOptionPane.ERROR_MESSAGE);
@@ -111,7 +113,7 @@ public class mainJFrameUser extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(mainJFrameUser.this, "Pick a ticket", "Miss ticket", JOptionPane.ERROR_MESSAGE);
 
                 }
-                compteur = 0;
+
             }
         });
         add(ticketJbuttonPanel);

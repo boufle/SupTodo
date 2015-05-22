@@ -1,3 +1,5 @@
+import frame.MainJFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,30 +8,43 @@ import java.awt.event.ActionListener;
 /**
  * Created by lalfechee on 19/05/2015.
  */
-public class ConnectionJFrame extends JFrame implements ActionListener {
+public class ConnectionJFrame extends MainJFrame implements ActionListener {
+
 
     PlaceholderTextField login = new PlaceholderTextField();
     PlaceholderPasswordField password = new PlaceholderPasswordField();
-    JButton connection = new JButton("Login");
-    JLabel separator = new JLabel();
     static Connect dbrequet = new Connect();
+    GridBagConstraints c = new GridBagConstraints();
+
 
     public ConnectionJFrame(){
 
 
         setResizable(false);
         utils.centreWindow(this);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLayout(new GridLayout(4, 1, 0, 10));
-        setTitle("SupTodo Connecting ...");
-        setSize(new Dimension(500, 300));
         login.setPlaceholder("Login");
         password.setPlaceholder("Password");
-        add(separator);
-        add(login);
-        add(password);
-        add(connection);
-        connection.addActionListener(this);
+
+        login.setPreferredSize(new Dimension(200, 30));
+        password.setPreferredSize(new Dimension(200,30));
+
+        body.setLayout(new GridBagLayout());
+        c.insets = new Insets(20, 2, 2, 2);
+        c.weighty = 1.0;
+        c.weightx = 1.0;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.anchor = GridBagConstraints.NORTH;
+        body.add(login,c);
+
+        c.insets = new Insets(5, 2, 20, 2);
+        c.gridx = 0;
+        c.gridy =1;
+        c.anchor = GridBagConstraints.SOUTH;
+        body.add(password,c);
+
+        jbuttonFooter.addActionListener(this);
+        pack();
         setVisible(true);
 
 
@@ -39,6 +54,7 @@ public class ConnectionJFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        new Connection(login.getText(), String.valueOf(password.getPassword()), this);
+        if (e.getSource().equals(jbuttonFooter))
+            new Connection(login.getText(), String.valueOf(password.getPassword()), this);
     }
 }

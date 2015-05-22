@@ -4,12 +4,15 @@
 
 
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import javax.swing.text.Document;
 
 @SuppressWarnings("serial")
-public class PlaceholderTextField extends JTextField {
+public class PlaceholderTextField extends JTextField implements FocusListener {
 
     public static void main(final String[] args) {
         final PlaceholderTextField tf = new PlaceholderTextField("");
@@ -23,6 +26,13 @@ public class PlaceholderTextField extends JTextField {
     private String placeholder;
 
     public PlaceholderTextField() {
+        setBackground(new Color(128, 128, 128));
+        setBorder(new LineBorder(new Color(180, 180, 180), 2, true));
+        setSelectionColor(Color.RED);
+        setForeground(Color.WHITE);
+        setCaretColor(Color.WHITE);
+        addFocusListener(this);
+
     }
 
     public PlaceholderTextField(
@@ -70,4 +80,13 @@ public class PlaceholderTextField extends JTextField {
         placeholder = s;
     }
 
+    @Override
+    public void focusGained(FocusEvent e) {
+        setBorder(new LineBorder(new Color(69, 111, 175), 2, true));
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+        setBorder(new LineBorder(new Color(180, 180, 180), 2, true));
+    }
 }

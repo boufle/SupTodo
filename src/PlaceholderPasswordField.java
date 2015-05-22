@@ -7,12 +7,15 @@
 
 
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import javax.swing.text.Document;
 
 @SuppressWarnings("serial")
-public class PlaceholderPasswordField extends JPasswordField{
+public class PlaceholderPasswordField extends JPasswordField implements FocusListener{
 
     public static void main(final String[] args) {
         final PlaceholderTextField tf = new PlaceholderTextField("");
@@ -27,6 +30,13 @@ public class PlaceholderPasswordField extends JPasswordField{
     private String placeholder;
 
     public PlaceholderPasswordField() {
+
+        setBackground(new Color(128, 128, 128));
+        setBorder(new LineBorder(new Color(180, 180, 180), 2, true));
+        setSelectionColor(Color.RED);
+        setCaretColor(Color.WHITE);
+        setForeground(Color.WHITE);
+        addFocusListener(this);
     }
 
     public PlaceholderPasswordField(
@@ -73,5 +83,13 @@ public class PlaceholderPasswordField extends JPasswordField{
     public void setPlaceholder(final String s) {
         placeholder = s;
     }
+    @Override
+    public void focusGained(FocusEvent e) {
+        setBorder(new LineBorder(new Color(69, 111, 175), 2, true));
+    }
 
+    @Override
+    public void focusLost(FocusEvent e) {
+        setBorder(new LineBorder(new Color(180, 180, 180), 2, true));
+    }
 }
