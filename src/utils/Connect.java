@@ -1,3 +1,5 @@
+package utils;
+
 import java.sql.*;
 import java.sql.Connection;
 

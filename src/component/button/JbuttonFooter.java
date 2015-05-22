@@ -1,12 +1,9 @@
-package button;
+package component.button;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by 16915_000 on 18/07/14.

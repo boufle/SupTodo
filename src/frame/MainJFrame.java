@@ -1,14 +1,13 @@
 package frame;
 
-import button.JbuttonFooter;
-import button.JbuttonMenu;
-import button.exiteJButton;
+import component.button.JbuttonFooter;
+import component.button.JbuttonMenu;
+import component.button.exiteJButton;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -34,7 +33,7 @@ public class MainJFrame extends JFrame {
         setSize(new Dimension(500, 300));
 
 
-
+        jbuttonMenu.setVisible(false);
         top.setLayout(new GridBagLayout());
         top.setPreferredSize(new Dimension(300, 30));
         top.setBorder(new LineBorder(Color.black, 2));
@@ -48,7 +47,7 @@ public class MainJFrame extends JFrame {
 
         c.gridx = 1;
         c.gridy = 0;
-        spacer.setPreferredSize(new Dimension(180, 24));
+        spacer.setPreferredSize(new Dimension(230, 24));
         top.add(spacer, c);
 
         c.anchor = GridBagConstraints.EAST;

@@ -1,3 +1,8 @@
+package frame;
+
+import component.textfield.PlaceholderTextField;
+import frame.ConnectionJFrame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +25,6 @@ public class mainJFrameAdmin extends JFrame implements ActionListener {
         ticketname.setPlaceholder("Enter a ticket name...");
         setTitle("Admin Windows");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        utils.centreWindow(this);
         setSize(new Dimension(600, 600));
         add(todo);
         add(ticketname);

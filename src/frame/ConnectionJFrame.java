@@ -1,6 +1,10 @@
-import frame.MainJFrame;
+package frame;
 
-import javax.swing.*;
+import component.textfield.PlaceholderPasswordField;
+import component.textfield.PlaceholderTextField;
+import utils.Connect;
+import utils.Connection;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +17,7 @@ public class ConnectionJFrame extends MainJFrame implements ActionListener {
 
     PlaceholderTextField login = new PlaceholderTextField();
     PlaceholderPasswordField password = new PlaceholderPasswordField();
-    static Connect dbrequet = new Connect();
+    public static Connect dbrequet = new Connect();
     GridBagConstraints c = new GridBagConstraints();
 
 
@@ -21,12 +25,11 @@ public class ConnectionJFrame extends MainJFrame implements ActionListener {
 
 
         setResizable(false);
-        utils.centreWindow(this);
         login.setPlaceholder("Login");
         password.setPlaceholder("Password");
 
         login.setPreferredSize(new Dimension(200, 30));
-        password.setPreferredSize(new Dimension(200,30));
+        password.setPreferredSize(new Dimension(200, 30));
 
         body.setLayout(new GridBagLayout());
         c.insets = new Insets(20, 2, 2, 2);

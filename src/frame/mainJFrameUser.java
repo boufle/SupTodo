@@ -1,3 +1,6 @@
+package frame;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +31,6 @@ public class mainJFrameUser extends JFrame implements ActionListener {
         setLayout(new GridLayout(7, 1));
         setTitle("User Windows");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        utils.centreWindow(this);
         setSize(new Dimension(600, 600));
     init();
 
@@ -41,7 +43,7 @@ public class mainJFrameUser extends JFrame implements ActionListener {
 
         checkshow = true;
         String[] test;
-//        test =  ConnectionJFrame.dbrequet.getComment(ConnectionJFrame.dbrequet.getIdToDoByName(source.getText()));
+//        test =  frame.ConnectionJFrame.dbrequet.getComment(frame.ConnectionJFrame.dbrequet.getIdToDoByName(source.getText()));
         source = (JButton) e.getSource();
         ticketTitle.setText("Title: " + source.getText());
         description.setText("<html>Description: <br>" + ConnectionJFrame.dbrequet.getDescriptionTicket(source.getText()) + "</html>");

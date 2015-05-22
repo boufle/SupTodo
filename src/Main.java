@@ -1,4 +1,4 @@
-import frame.MainJFrame;
+import frame.ConnectionJFrame;
 
 /**
  * Created by lalfechee on 19/05/2015.

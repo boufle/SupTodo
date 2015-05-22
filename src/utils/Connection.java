@@ -1,6 +1,10 @@
+package utils;
+
+import frame.ConnectionJFrame;
+import frame.mainJFrameAdmin;
+import frame.mainJFrameUser;
+
 import javax.swing.*;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 /**
  * Created by lalfechee on 19/05/2015.

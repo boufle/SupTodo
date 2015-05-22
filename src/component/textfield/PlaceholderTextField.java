@@ -1,4 +1,4 @@
-/**
+package component.textfield; /**
  * Created by lalfechee on 19/05/2015.
  */
 
