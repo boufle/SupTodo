@@ -31,7 +31,7 @@ public class MainJFrame extends JFrame {
         setUndecorated(true);
         setResizable(false);
         setSize(new Dimension(500, 300));
-
+        setLocationRelativeTo(this);
 
         jbuttonMenu.setVisible(false);
         top.setLayout(new GridBagLayout());
@@ -47,7 +47,7 @@ public class MainJFrame extends JFrame {
 
         c.gridx = 1;
         c.gridy = 0;
-        spacer.setPreferredSize(new Dimension(230, 24));
+        spacer.setPreferredSize(new Dimension(240, 24));
         top.add(spacer, c);
 
         c.anchor = GridBagConstraints.EAST;

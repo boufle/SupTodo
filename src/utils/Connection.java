@@ -3,8 +3,10 @@ package utils;
 import frame.ConnectionJFrame;
 import frame.mainJFrameAdmin;
 import frame.mainJFrameUser;
+import frame.popup.newPopup;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by lalfechee on 19/05/2015.
@@ -30,7 +32,9 @@ public class Connection {
 
         }
         else {
-            JOptionPane.showMessageDialog(frame, "Login Failed", "Login Error", JOptionPane.ERROR_MESSAGE);
+            Toolkit.getDefaultToolkit().beep();
+            new newPopup("Login Failed","You missmatch something");
+
         }
     }
 }
